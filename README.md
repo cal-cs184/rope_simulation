@@ -42,10 +42,6 @@ Verlet is a different way of ensuring that all constraints are dealt with accura
 
 ![image](https://user-images.githubusercontent.com/3310961/113612846-34d04780-9605-11eb-863d-6f3f260a6843.png)
 
-In addition, we can now emulate springs with an infinite spring constant. Instead of bothering with spring forces, we simply move each mass's position such that the springs are set back to their rest length. The correction vector should be proportional to the displacement between the two masses and in the direction between one mass and the other. Each mass should move by half the displacement.
-
-As long as we do this for every pair of springs, the simulation should approach stability. Additional rounds of simulations may be necessary to make the motion smoother.
-
 ## Part 4: Damping (10 mins)
 
 ### Part 4.1
