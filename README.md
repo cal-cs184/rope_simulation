@@ -22,19 +22,13 @@ Run `./ropesim`. You should see the rope drawn to the screen.
 
 Hooke's law states that the force on two points along a spring is proportional to their distance. That is,
 
-![](http://quicklatex.com/cache3/bf/ql_1d79c5f0195b3fb81b7aa300358ccfbf_l3.png)
-
-$$f_{a\rightarrowb} = -k_s\frac{b - a}{||b - a||^2} (||b - a|| - l)$$
+![image](https://user-images.githubusercontent.com/3310961/113612972-647f4f80-9605-11eb-8f6e-1af0500107e6.png)
 
 In `Rope::simulateEuler`, first implement Hooke's law. Iterate over all the springs and apply the correct spring force to the mass on either end of the spring. Ensure that the force is pointing in the correct direction! Accumulate all forces due to springs in the `forces` attribute of each `Mass`.
 
-Once all the spring forces have been computed, apply the laws of physics to each particle:
+Once all the spring forces have been computed, apply the laws of physics to each particle (recall `F=ma`):
 
-```
-F = ma
-v(t+1) = v(t) + a(t) * dt
-x(t+1) = x(t) + v(t) * dt
-```
+![image](https://user-images.githubusercontent.com/3310961/113612556-db681880-9604-11eb-9559-06c0068ddf0c.png)
 
 ### Part 2.2
 
@@ -46,9 +40,7 @@ Run `./ropesim -s 32` to set the simulation to use a different number of simulat
 
 Verlet is a different way of ensuring that all constraints are dealt with accurately. The benefit to this approach is that the simulation is handled entirely through the positions of the vertices in the simulation, and it remains fourth-order accurate! Unlike Euler, Verlet integration follows the following rule to calculate the next position in the simulation:
 
-```
-x(t+1) = 2 * x(t) - x(t-1) + a(t) * dt * dt
-```
+![image](https://user-images.githubusercontent.com/3310961/113612846-34d04780-9605-11eb-863d-6f3f260a6843.png)
 
 In addition, we can now emulate springs with an infinite spring constant. Instead of bothering with spring forces, we simply move each mass's position such that the springs are set back to their rest length. The correction vector should be proportional to the displacement between the two masses and in the direction between one mass and the other. Each mass should move by half the displacement.
 
@@ -62,8 +54,7 @@ Add damping to Hooke's law in explicit Euler. In a spring-damper system, an addi
 
 ### Part 4.2
 
-```
-x(t+1) = (2 - damping_factor) * x(t) - x(t-1) + a(t) * dt * dt
-```
+![image](https://user-images.githubusercontent.com/3310961/113612884-431e6380-9605-11eb-8e96-20904cb60a7e.png)
+
 
 where 0 < damping_factor < 1. Small damping factors work better (~0.0005), otherwise the simulation becomes overdamped and uninteresting.
