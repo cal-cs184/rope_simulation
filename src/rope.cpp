@@ -50,7 +50,7 @@ void Rope::simulateEuler(float delta_t, Vector2D gravity) {
 }
 
 void Rope::simulateVerlet(float delta_t, Vector2D gravity) {
-  // TODO (Part 3.1): Clear forces and add gravity
+  // TODO (Part 3.1): Clear forces
   for (auto &s : springs) {
     // TODO (Part 3.1): Simulate one timestep of the rope using explicit Verlet
     
